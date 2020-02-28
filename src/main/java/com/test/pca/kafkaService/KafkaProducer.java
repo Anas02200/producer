@@ -27,23 +27,14 @@ public class KafkaProducer {
 		this.kafkaTemplate.send(TOPIC, String.valueOf(Math.random()), message);
 		
 	}
-	@Scheduled(fixedRate = 1000)
+	/*@Scheduled(fixedRate = 1000)
 	public void sendMessage() {
 		UserEntity message = new UserEntity();
 		logger.info(String.format("PRODUCING MESSAGE ==> "+ message.getCardNumber(), message.getName()));
 		this.kafkaTemplate.send(TOPIC, String.valueOf(Math.random()), message);
 		
-	}
-	
-	/*public void sendMessage(String message) {
-		logger.info(String.format("PRODUCING MESSAGE ==> %s", message));
-		//this.kafkaTemplate.send(TOPIC,message);
 	}*/
-	/*private long counter = 0;
-	@Scheduled(fixedRate = 5)
-    public void produce() {
-        System.out.println("Produced :: " + counter);
-        this.kafkaTemplate.send(TOPIC,counter++);
-    }*/
+	
+	
 	
 }

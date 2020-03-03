@@ -21,7 +21,7 @@ public class CloudStreamProducer {
 		this.consumer = channel.out();
 	}
 
-	@Scheduled(fixedRate = 1000)
+	@Scheduled(fixedRate = 5000)
 	public void send() {
 		
 		UserEntity user = new UserEntity("mee", 56456456);

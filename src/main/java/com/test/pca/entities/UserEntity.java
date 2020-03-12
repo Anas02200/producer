@@ -1,34 +1,41 @@
 package com.test.pca.entities;
 
-public class UserEntity {
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-	private String name;
-	private long cardNumber;
- 
-	public UserEntity() {
-		
-	}
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-	public UserEntity(String name, long cardNumber) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "Users")
+public class UserEntity implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String firstName;
+	private String lastName;
+	@OneToMany(mappedBy = "cardHolder", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<CardDataEntity> cardsOwned;
+	public UserEntity(String firstName, String lastName) {
 		super();
-		this.name = name;
-		this.cardNumber = cardNumber;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getCardNumber() {
-		return cardNumber;
-	}
-
-	public void setCardNumber(long cardNumber) {
-		this.cardNumber = cardNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 }

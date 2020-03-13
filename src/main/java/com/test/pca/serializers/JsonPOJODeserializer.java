@@ -1,18 +1,17 @@
 package com.test.pca.serializers;
 
-import java.util.Map;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.pca.entities.BankClientEntity;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Deserializer;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.test.pca.entities.UserEntity;
+import java.util.Map;
 
 
-public class JsonPOJODeserializer implements Deserializer<UserEntity> {
+public class JsonPOJODeserializer implements Deserializer<BankClientEntity> {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
-	private Class<UserEntity> tClass;
+	private Class<BankClientEntity> tClass;
 
 	public JsonPOJODeserializer() {
 	}
@@ -23,12 +22,12 @@ public class JsonPOJODeserializer implements Deserializer<UserEntity> {
 	}
 
 	@Override
-	public UserEntity deserialize(String topic, byte[] bytes) {
+	public BankClientEntity deserialize(String topic, byte[] bytes) {
 		// TODO Auto-generated method stub
 		if (bytes == null)
             return null;
 
-        UserEntity data;
+        BankClientEntity data;
         try {
             data = objectMapper.readValue(bytes, tClass);
         } catch (Exception e) {

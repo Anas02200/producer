@@ -1,5 +1,6 @@
 
-server:  port: 9010
+server:
+  port: 9013
 #spring:
 #  kafka:
 #
@@ -12,6 +13,8 @@ server:  port: 9010
 #          json:
 #            trusted:
 #              packages: com.test.pca.entities
-#    listener:#      missing-topics-fatal: false
+#    listener:
+#      missing-topics-fatal: false
 
-                          
+            
+              

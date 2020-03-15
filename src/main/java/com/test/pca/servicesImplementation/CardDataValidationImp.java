@@ -21,16 +21,23 @@ public class CardDataValidationImp implements CardDataValidation {
 
 
     @Override
-    public boolean validateCardInfos(String bankClientEntity_fullName, String cardNumber, int cardCCV) {
+    public boolean validateCardInfos(String cardNumber, int cardCCV, String bankClientEntity_fullName) {
         logger.info("validating card data");
-        return bankCardRepository.existsBankCardEntityByBankClientEntity_FullNameAndCardNumberAndCardCCV(bankClientEntity_fullName, cardNumber, cardCCV);
+        return bankCardRepository
+                .existsBankCardEntityByCardNumberAndCardCCVAndBankAccountEntity_BankClientEntity_FullName(cardNumber,
+                        cardCCV, bankClientEntity_fullName);
     }
 
     @Override
-    public BankClientEntity getBankClientFromCardInfos(String bankClientEntity_fullName, String cardNumber, int cardCCV) {
+    public BankClientEntity getBankClientFromCardInfos(String cardNumber, int cardCCV,
+                                                       String bankClientEntity_fullName) {
         logger.info("getting user data");
-        BankClientEntity bankClientEntity = bankCardRepository.findBankCardEntityByBankClientEntity_FullNameAndCardNumberAndCardCCV(bankClientEntity_fullName, cardNumber, cardCCV).getBankClientEntity();
+        BankClientEntity bankClientEntity = bankCardRepository
+                .findBankCardEntityByCardNumberAndCardCCVAndBankAccountEntity_BankClientEntity_FullName(cardNumber,
+                        cardCCV, bankClientEntity_fullName).getBankAccountEntity().getBankClientEntity();
         System.out.println(bankClientEntity);
         return bankClientEntity;
     }
+
+
 }

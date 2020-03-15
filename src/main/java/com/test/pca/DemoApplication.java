@@ -36,20 +36,21 @@ public class DemoApplication {
             bankClientRepository.save(user);
             bankClientRepository.save(user1);
             //create new accounts
-            BankAccountEntity account1 = new BankAccountEntity(4644646L,AccountType.COURANT, AccountCurrency.MAD,
+            BankAccountEntity account1 = new BankAccountEntity(4644647486L,AccountType.COURANT, AccountCurrency.MAD,
              158.25f, 564646454L, "rabat" , user);
-			BankAccountEntity account2 = new BankAccountEntity(4644646L,AccountType.COURANT, AccountCurrency.MAD,
+			BankAccountEntity account2 = new BankAccountEntity(4644622346L,AccountType.INTERNECREDIT,
+                    AccountCurrency.EUR,
 					158.25f, 564646454L, "casa" , user);
-			BankAccountEntity account3 = new BankAccountEntity(4644646L,AccountType.COURANT, AccountCurrency.MAD,
+			BankAccountEntity account3 = new BankAccountEntity(4644647480L,AccountType.COURANT, AccountCurrency.MAD,
 					158.25f, 564646454L, "rabat" , user1);
             bankAccountRepository.save(account1);
             bankAccountRepository.save(account2);
             bankAccountRepository.save(account3);
             // create and save new pages
-			BankCardEntity card1=new BankCardEntity("4544464", date, date , 454523,user1);
-			BankCardEntity card2=new BankCardEntity("4544464", date, date , 454555,user);
-			BankCardEntity card3=new BankCardEntity("4544464", date, date , 454568,user1);
-			BankCardEntity card4=new BankCardEntity("4544464", date, date , 454502,user);
+			BankCardEntity card1=new BankCardEntity("45444641213", date, date , 45452312,account1);
+			BankCardEntity card2=new BankCardEntity("45444644897", date, date , 45455578,account2);
+			BankCardEntity card3=new BankCardEntity("45444644788", date, date , 45456847,account3);
+			BankCardEntity card4=new BankCardEntity("45444644566", date, date , 45450201,account1);
 
 			bankCardRepository.save(card1);
 			bankCardRepository.save(card2);

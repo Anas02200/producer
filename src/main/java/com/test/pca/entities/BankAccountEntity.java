@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -20,8 +21,8 @@ import java.io.Serializable;
 @Setter
 public class BankAccountEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //private Long id;
     private Long accountNumber;
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
@@ -35,6 +36,8 @@ public class BankAccountEntity implements Serializable {
     @JsonIgnore
     @JoinColumn(name = "AccountOwner", nullable = false)
     private BankClientEntity bankClientEntity;
+    @OneToMany(mappedBy = "bankAccountEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<BankCardEntity> bankCardEntities;
 
     public BankAccountEntity(Long accountNumber, AccountType accountType, AccountCurrency accountCurrency, float accountBalance, Long accountIBAN, String accountCreationBranch, BankClientEntity bankClientEntity) {
         this.accountNumber = accountNumber;

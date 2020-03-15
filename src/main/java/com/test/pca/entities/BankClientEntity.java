@@ -35,8 +35,6 @@ public class BankClientEntity implements Serializable {
 	@Column(name="cin")
 	private String identityCardNumber;
 	@OneToMany(mappedBy = "bankClientEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<BankCardEntity> cardsOwned;
-	@OneToMany(mappedBy = "bankClientEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<BankAccountEntity> bankAccounts;
 
 	public BankClientEntity(String fullName, String email, String phone, Calendar joinDate, String identityCardNumber) {

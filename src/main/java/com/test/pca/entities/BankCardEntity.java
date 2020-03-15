@@ -28,18 +28,18 @@ public class BankCardEntity implements Serializable {
 	private int cardCCV;
 	@ManyToOne(optional = false)
 	@JsonIgnore
-	@JoinColumn(name = "CardHolder", nullable = false)
-	private BankClientEntity bankClientEntity;
+	@JoinColumn(name = "BankAccount", nullable = false)
+	private BankAccountEntity bankAccountEntity ;
 
 	//constructor
 
-	public BankCardEntity(String cardNumber, Calendar cardExpirationDate, Calendar cardIssueDate, int cardCCV, BankClientEntity bankClientEntity) {
+	public BankCardEntity(String cardNumber, Calendar cardExpirationDate, Calendar cardIssueDate, int cardCCV, BankAccountEntity bankAccountEntity) {
 		this.cardNumber = cardNumber;
 		this.cardExpirationDate = cardExpirationDate;
 		this.cardIssueDate = cardIssueDate;
 
 		this.cardCCV = cardCCV;
-		this.bankClientEntity = bankClientEntity;
+		this.bankAccountEntity = bankAccountEntity;
 
 	}
 }

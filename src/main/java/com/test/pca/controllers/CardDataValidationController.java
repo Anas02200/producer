@@ -26,9 +26,9 @@ public class CardDataValidationController {
     @RequestMapping(value = "/validate", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity validateCardInfos(@RequestParam("bankClientEntity_fullName") String bankClientEntity_fullName, @RequestParam("cardNumber") String cardNumber, @RequestParam("cardCCV") int cardCCV) {
-        if (cardDataValidation.validateCardInfos(bankClientEntity_fullName, cardNumber, cardCCV)) {
+        if (cardDataValidation.validateCardInfos(cardNumber, cardCCV,bankClientEntity_fullName)) {
             log.info("validated card");
-            BankClientEntity bankClientEntity = cardDataValidation.getBankClientFromCardInfos(bankClientEntity_fullName, cardNumber, cardCCV);
+            BankClientEntity bankClientEntity = cardDataValidation.getBankClientFromCardInfos(cardNumber, cardCCV,bankClientEntity_fullName);
             kafkaProducerService.send(bankClientEntity);
             log.info("processing payment info");
             return ResponseEntity.status(200).body(bankClientEntity);

@@ -1,10 +1,12 @@
 package com.test.pca.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.test.pca.enums.AccountCurrency;
 import com.test.pca.enums.AccountType;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,7 +16,8 @@ import java.io.Serializable;
 @Table(name = "Accounts")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class BankAccountEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +32,7 @@ public class BankAccountEntity implements Serializable {
     private Long accountIBAN;
     private String accountCreationBranch;
     @ManyToOne(optional = false)
+    @JsonIgnore
     @JoinColumn(name = "AccountOwner", nullable = false)
     private BankClientEntity bankClientEntity;
 

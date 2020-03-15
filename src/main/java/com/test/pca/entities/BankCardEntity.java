@@ -1,8 +1,10 @@
 package com.test.pca.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +14,8 @@ import java.util.Calendar;
 @Table(name = "Cards")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class BankCardEntity implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +27,9 @@ public class BankCardEntity implements Serializable {
 	private Calendar cardIssueDate;
 	private int cardCCV;
 	@ManyToOne(optional = false)
+	@JsonIgnore
 	@JoinColumn(name = "CardHolder", nullable = false)
 	private BankClientEntity bankClientEntity;
-
 
 	//constructor
 

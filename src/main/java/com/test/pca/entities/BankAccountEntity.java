@@ -37,6 +37,7 @@ public class BankAccountEntity implements Serializable {
     @JoinColumn(name = "AccountOwner", nullable = false)
     private BankClientEntity bankClientEntity;
     @OneToMany(mappedBy = "bankAccountEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<BankCardEntity> bankCardEntities;
 
     public BankAccountEntity(Long accountNumber, AccountType accountType, AccountCurrency accountCurrency, float accountBalance, Long accountIBAN, String accountCreationBranch, BankClientEntity bankClientEntity) {

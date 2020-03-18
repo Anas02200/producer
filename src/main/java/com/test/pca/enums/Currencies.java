@@ -2,7 +2,7 @@ package com.test.pca.enums;
 
 import org.jetbrains.annotations.Contract;
 
-public enum AccountCurrency {
+public enum Currencies {
     AED("United Arab Emirates Dirham"),
     AFN("Afghanistan Afghani"),
     ALL("Albania Lek"),
@@ -168,7 +168,7 @@ public enum AccountCurrency {
     private String description;
 
     @Contract(pure = true)
-    AccountCurrency(String description) {
+    Currencies(String description) {
         this.description = description;
     }
 

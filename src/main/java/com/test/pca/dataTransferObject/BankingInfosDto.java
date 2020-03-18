@@ -20,5 +20,9 @@ public class BankingInfosDto {
     private String identityCardNumber;
     private List<BankAccountEntity> bankAccounts;
     private List<BankCardEntity> bankCardEntities;
+    private BankAccountEntity transactionBankAccountEntity;
+    private BankCardEntity transactionBankCardEntity;
+    private TransactionData transactionData;
+
 
 }

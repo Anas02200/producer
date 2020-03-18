@@ -1,8 +1,8 @@
 package com.test.pca.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.test.pca.enums.AccountCurrency;
 import com.test.pca.enums.AccountType;
+import com.test.pca.enums.Currencies;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,7 @@ public class BankAccountEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
     @Enumerated(EnumType.STRING)
-    private AccountCurrency accountCurrency ;
+    private Currencies accountCurrency ;
     private float accountBalance;
     @Column(name="ACCOUNT_IBAN")
     private Long accountIBAN;
@@ -40,7 +40,7 @@ public class BankAccountEntity implements Serializable {
     @JsonIgnore
     private List<BankCardEntity> bankCardEntities;
 
-    public BankAccountEntity(Long accountNumber, AccountType accountType, AccountCurrency accountCurrency, float accountBalance, Long accountIBAN, String accountCreationBranch, BankClientEntity bankClientEntity) {
+    public BankAccountEntity(Long accountNumber, AccountType accountType, Currencies accountCurrency, float accountBalance, Long accountIBAN, String accountCreationBranch, BankClientEntity bankClientEntity) {
         this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.accountCurrency = accountCurrency;

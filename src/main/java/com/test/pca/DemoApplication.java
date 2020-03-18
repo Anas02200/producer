@@ -3,8 +3,8 @@ package com.test.pca;
 import com.test.pca.entities.BankAccountEntity;
 import com.test.pca.entities.BankCardEntity;
 import com.test.pca.entities.BankClientEntity;
-import com.test.pca.enums.AccountCurrency;
 import com.test.pca.enums.AccountType;
+import com.test.pca.enums.Currencies;
 import com.test.pca.repositories.BankAccountRepository;
 import com.test.pca.repositories.BankCardRepository;
 import com.test.pca.repositories.BankClientRepository;
@@ -28,7 +28,7 @@ public class DemoApplication {
     public CommandLineRunner mappingDemo(BankAccountRepository bankAccountRepository,
                                          BankClientRepository bankClientRepository, BankCardRepository bankCardRepository) {
         return args -> {
-            Calendar date = new GregorianCalendar(2020, 2, 10);
+            Calendar date = new GregorianCalendar(2020, Calendar.MARCH, 10);
             // create new clients
             BankClientEntity user = new BankClientEntity("anas", "rafa0anas@gmail.com", "056156156", date, "564564466465");
             BankClientEntity user1 = new BankClientEntity("anaas", "rafaoo0anas@gmail.com", "06565565", date, "564564466465");
@@ -36,12 +36,12 @@ public class DemoApplication {
             bankClientRepository.save(user);
             bankClientRepository.save(user1);
             //create new accounts
-            BankAccountEntity account1 = new BankAccountEntity(4644647486L,AccountType.COURANT, AccountCurrency.MAD,
+            BankAccountEntity account1 = new BankAccountEntity(4644647486L,AccountType.COURANT, Currencies.MAD,
              158.25f, 564646454L, "rabat" , user);
 			BankAccountEntity account2 = new BankAccountEntity(4644622346L,AccountType.INTERNECREDIT,
-                    AccountCurrency.EUR,
+                    Currencies.EUR,
 					158.25f, 564646454L, "casa" , user);
-			BankAccountEntity account3 = new BankAccountEntity(4644647480L,AccountType.COURANT, AccountCurrency.MAD,
+			BankAccountEntity account3 = new BankAccountEntity(4644647480L,AccountType.COURANT, Currencies.MAD,
 					158.25f, 564646454L, "rabat" , user1);
             bankAccountRepository.save(account1);
             bankAccountRepository.save(account2);
